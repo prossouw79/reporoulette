@@ -9,8 +9,8 @@
             "type": "python",
             "request": "launch",
             "program": "main.py",
-            "python": "python3",
-            "envFile": "${workspaceFolder}/environment.env",
+            "python": "${workspaceFolder}/venv/bin/python3",
+            "envFile": "${workspaceFolder}/compose.env",
             "console": "integratedTerminal",
             "justMyCode": true
         }

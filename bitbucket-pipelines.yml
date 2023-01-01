@@ -1,0 +1,13 @@
+image: python:3.10
+
+pipelines:
+  default:
+    - step:
+        name: Run
+        script:
+          - pip install -r requirements.txt
+          - python3 api.py
+          - mv database.db pipeline.db
+          - git add pipeline.db
+          - git commit -m "[skip ci] Updated database"
+          - git push

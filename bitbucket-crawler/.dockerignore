@@ -1,0 +1,6 @@
+*.db
+*.env
+Dockerfile
+.dockerignore
+docker-compose.yml
+.vscode/

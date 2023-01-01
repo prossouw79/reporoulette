@@ -1,0 +1,31 @@
+version: '3.3'
+
+services:
+  bitbucket-crawler:
+    container_name: bitbucket-crawler
+    hostname: bitbucket-crawler
+    build: 
+      context: bitbucket-crawler
+    env_file: bitbucket-crawler/compose.env
+    volumes:
+      - ./bitbucket-crawler/db/database.db:/app/db/database.db
+    command: "python3 main.py"
+  api:
+    hostname: api
+    build:
+      context: bitbucket-crawler
+    env_file: bitbucket-crawler/compose.env
+    volumes:
+      - ./bitbucket-crawler/db/database.db:/app/db/database.db
+    ports:
+      - 8080:5000
+    command: "python3 api.py"
+  ui:
+    hostname: ui
+    build:
+      context: ui/repo-roulette
+    ports:
+      - 80:5173
+    depends_on:
+      - api
+
